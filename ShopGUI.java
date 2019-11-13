@@ -15,7 +15,7 @@ public class ShopGUI {
 	private JTextField textField;
 	String input = "";
 	ArrayList<String> dList = new ArrayList<String>();
-	
+	int x = 0;
 	List Shop = new List();
 	
 
@@ -87,7 +87,11 @@ public class ShopGUI {
 		btnDelete.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dList = Shop.delete(input);
-				for(int x = 0; x < dList.size(); x++)
+				if(dList.size() == 0)
+					x = -1;
+				textArea.selectAll();
+				textArea.replaceSelection("");
+				for(x = 0; x < dList.size(); x++)
 				{
 					textArea.setText(dList.get(x) + "\n");
 				}
